@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://linuxhint.com/users_groups_linux_commandline/ -->
+<html lang="en-US" class="no-js no-svg"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" src="./Users and groups addition modification_files/analytics.js.download"></script><script type="text/javascript" async="" src="./Users and groups addition modification_files/publishertag.prebid.js.download"></script><script async="" src="./Users and groups addition modification_files/wrap.js.download"></script><script async="" src="./Users and groups addition modification_files/wrap.js(1).download"></script><script type="text/javascript" src="./Users and groups addition modification_files/config.js.download"></script><script type="text/javascript" src="./Users and groups addition modification_files/beacon.js.download"></script><script type="text/javascript" src="./Users and groups addition modification_files/web-vitals.es5.umd.min.js.download" defer=""></script><script type="text/javascript" src="./Users and groups addition modification_files/prebid.min.js.download"></script><script type="text/javascript" src="./Users and groups addition modification_files/gpt.js.download"></script><script type="text/javascript" src="./Users and groups addition modification_files/apstag.js.download"></script>
+
+
+<meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+<link rel="profile" href="https://gmpg.org/xfn/11">
+<title>Users and groups administrations from the command line in Linux – Linux Hint</title>
+<meta name="robots" content="max-image-preview:large">
+
+<script type="text/javascript" src="./Users and groups addition modification_files/adthrive.min.js.download"></script><script type="text/javascript" async="" src="./Users and groups addition modification_files/atrk.js.download"></script><script async="" src="./Users and groups addition modification_files/ads.min.js.download"></script><script>
+(function(w, d) {
+	w.adthrive = w.adthrive || {};
+	w.adthrive.cmd = w.adthrive.cmd || [];
+	w.adthrive.plugin = 'adthrive-ads-1.0.46';
+	w.adthrive.host = 'ads.adthrive.com';
+
+	var s = d.createElement('script');
+	s.async = true;
+	s.referrerpolicy='no-referrer-when-downgrade';
+	s.src = 'https://' + w.adthrive.host + '/sites/5c9b6001b80bec0dfaf0b493/ads.min.js?referrer=' + w.encodeURIComponent(w.location.href);
+	var n = d.getElementsByTagName('script')[0];
+	n.parentNode.insertBefore(s, n);
+})(window, document);
+</script>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="https://linuxhint.com/">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com/">
+<link rel="dns-prefetch" href="https://ads.adthrive.com/">
+<link rel="dns-prefetch" href="https://z-na.amazon-adsystem.com/">
+<link rel="dns-prefetch" href="https://certify-js.alexametrics.com/">
+<link rel="dns-prefetch" href="https://www.google-analytics.com/">
+<link rel="dns-prefetch" href="https://aax-us-east.amazon-adsystem.com/">
+<link rel="dns-prefetch" href="https://certify.alexametrics.com/">
+<link rel="dns-prefetch" href="https://ws-na.amazon-adsystem.com/">
+<link rel="dns-prefetch" href="https://c.amazon-adsystem.com/">
+<link rel="dns-prefetch" href="https://securepubads.g.doubleclick.net/">
+<link rel="dns-prefetch" href="https://logger.adthrive.com/">
+<link rel="dns-prefetch" href="https://sb.scorecardresearch.com/">
+<link rel="dns-prefetch" href="https://confiant-integrations.global.ssl.fastly.net/">
+<link rel="dns-prefetch" href="https://gum.criteo.com/">
+<link rel="dns-prefetch" href="https://prebid.adnxs.com/">
+<link rel="dns-prefetch" href="https://a.teads.tv/">
+<link rel="dns-prefetch" href="https://fastlane.rubiconproject.com/">
+<link rel="dns-prefetch" href="https://ib.adnxs.com/">
+<link rel="dns-prefetch" href="https://htlb.casalemedia.com/">
+<link rel="dns-prefetch" href="https://s.amazon-adsystem.com/">
+<link rel="dns-prefetch" href="https://x.bidswitch.net/">
+<link rel="dns-prefetch" href="https://rtb.gumgum.com/">
+<link rel="dns-prefetch" href="https://ssum-sec.casalemedia.com/">
+<link rel="dns-prefetch" href="https://ads.pubmatic.com/">
+<link rel="dns-prefetch" href="https://eus.rubiconproject.com/">
+<link rel="dns-prefetch" href="https://pixel.advertising.com/">
+<link rel="dns-prefetch" href="https://u.openx.net/">
+<link rel="dns-prefetch" href="https://ap.lijit.com/">
+<link rel="dns-prefetch" href="https://cdn.districtm.io/">
+<link rel="dns-prefetch" href="https://eb2.3lift.com/">
+<link rel="dns-prefetch" href="https://pixel-sync.sitescout.com/">
+<link rel="dns-prefetch" href="https://pixel.quantserve.com/">
+<link rel="dns-prefetch" href="https://pixel-eu.rubiconproject.com/">
+<link rel="dns-prefetch" href="https://bh.contextweb.com/">
+<link rel="dns-prefetch" href="https://sync-tm.everesttech.net/">
+<link rel="dns-prefetch" href="https://pr-bh.ybp.yahoo.com/">
+<link rel="dns-prefetch" href="https://match.adsrvr.org/">
+<link rel="dns-prefetch" href="https://cm.g.doubleclick.net/">
+<link rel="dns-prefetch" href="https://ups.analytics.yahoo.com/">
+<link rel="dns-prefetch" href="https://secure.adnxs.com/">
+<link rel="dns-prefetch" href="https://sync.outbrain.com/">
+<link rel="dns-prefetch" href="https://us-u.openx.net/">
+<link rel="dns-prefetch" href="https://sync.srv.stackadapt.com/">
+<link rel="dns-prefetch" href="https://sync.ipredictive.com/">
+<link rel="dns-prefetch" href="https://b1sync.zemanta.com/">
+<link rel="dns-prefetch" href="https://sync.1rx.io/">
+<link rel="dns-prefetch" href="https://sync.mathtag.com/">
+<link rel="dns-prefetch" href="https://sync.technoratimedia.com/">
+<link rel="dns-prefetch" href="https://cs.emxdgt.com/">
+<link rel="dns-prefetch" href="https://tg.socdm.com/">
+<link rel="dns-prefetch" href="https://ce.lijit.com/">
+<link rel="dns-prefetch" href="https://dmx.districtm.io/">
+<link rel="dns-prefetch" href="https://loadm.exelator.com/">
+<link rel="dns-prefetch" href="https://dsum-sec.casalemedia.com/">
+<link rel="dns-prefetch" href="https://sync.extend.tv/">
+<link rel="dns-prefetch" href="https://d.adroll.com/">
+<link rel="dns-prefetch" href="https://ad.turn.com/">
+<link rel="dns-prefetch" href="https://t.pswec.com/">
+<link rel="dns-prefetch" href="https://districtm-match.dotomi.com/">
+<link rel="dns-prefetch" href="https://dmx.us-east-15.districtm.io/">
+<link rel="dns-prefetch" href="https://ic.tynt.com/">
+<link rel="dns-prefetch" href="https://image6.pubmatic.com/">
+<link rel="dns-prefetch" href="https://pixel.tapad.com/">
+<link rel="dns-prefetch" href="https://pixel-us-east.rubiconproject.com/">
+<link rel="dns-prefetch" href="https://de.tynt.com/">
+<link rel="dns-prefetch" href="https://token.rubiconproject.com/">
+<link rel="dns-prefetch" href="https://id.sharedid.org/">
+<link rel="dns-prefetch" href="https://id.rlcdn.com/">
+<link rel="dns-prefetch" href="https://pixel.rubiconproject.com/">
+<link rel="dns-prefetch" href="https://stags.bluekai.com/">
+<link rel="dns-prefetch" href="https://p.adsymptotic.com/">
+<link rel="dns-prefetch" href="https://um.simpli.fi/">
+<link rel="dns-prefetch" href="https://simage2.pubmatic.com/">
+<link rel="dns-prefetch" href="https://image2.pubmatic.com/">
+<link rel="dns-prefetch" href="https://secure-assets.rubiconproject.com/">
+<link rel="dns-prefetch" href="https://ssc-cms.33across.com/">
+<link rel="dns-prefetch" href="https://sync.targeting.unrulymedia.com/">
+<link rel="dns-prefetch" href="https://cms-xch-chicago.33across.com/">
+<link rel="dns-prefetch" href="https://image4.pubmatic.com/">
+<link rel="dns-prefetch" href="https://ads.yahoo.com/">
+<link rel="dns-prefetch" href="https://ads.betweendigital.com/">
+<link rel="dns-prefetch" href="https://usermatch.krxd.net/">
+<link rel="dns-prefetch" href="https://cms-xch.33across.com/">
+<link rel="dns-prefetch" href="https://acdn.adnxs.com/">
+<link rel="dns-prefetch" href="https://js-sec.indexww.com/">
+<link rel="dns-prefetch" href="https://m.fg8dgt.com/">
+<link rel="dns-prefetch" href="https://match.deepintent.com/">
+<link rel="dns-prefetch" href="https://bttrack.com/">
+<link rel="dns-prefetch" href="https://cm.adgrx.com/">
+<link rel="dns-prefetch" href="https://adservice.google.com/">
+<link rel="dns-prefetch" href="https://378ad08e64cb9e757d2a0c05580fcf42.safeframe.googlesyndication.com/">
+<link rel="dns-prefetch" href="https://tpc.googlesyndication.com/">
+<link rel="dns-prefetch" href="https://static.criteo.net/">
+<link rel="dns-prefetch" href="https://idsync.rlcdn.com/">
+<link rel="dns-prefetch" href="https://dsum.casalemedia.com/">
+<link rel="dns-prefetch" href="https://cdn.ampproject.org/">
+<link rel="dns-prefetch" href="https://pagead2.googlesyndication.com/">
+<link rel="dns-prefetch" href="https://track.adthrive.com/">
+<link rel="dns-prefetch" href="https://js.agkn.com/">
+<link rel="dns-prefetch" href="https://insight.adsrvr.org/">
+<link rel="dns-prefetch" href="https://simage4.pubmatic.com/">
+<link rel="dns-prefetch" href="https://www.google.com/">
+<link rel="dns-prefetch" href="https://googleads.g.doubleclick.net/">
+<link rel="dns-prefetch" href="https://d.agkn.com/">
+<link rel="dns-prefetch" href="https://www.googletagservices.com/">
+<link rel="dns-prefetch" href="https://aa.agkn.com/">
+<link rel="dns-prefetch" href="https://pixel.mathtag.com/">
+<link rel="dns-prefetch" href="https://c1.adform.net/">
+<link rel="dns-prefetch" href="https://visitor.fiftyt.com/">
+<link rel="dns-prefetch" href="https://pubmatic-match.dotomi.com/">
+<link rel="dns-prefetch" href="https://c.eu1.dyntrk.com/">
+<link rel="dns-prefetch" href="https://c.us1.dyntrk.com/">
+<link rel="dns-prefetch" href="https://match.sharethrough.com/">
+<link rel="dns-prefetch" href="https://ads.creative-serving.com/">
+<link rel="dns-prefetch" href="https://id5-sync.com/">
+<link rel="dns-prefetch" href="https://dis.criteo.com/">
+<link rel="dns-prefetch" href="https://pm.w55c.net/">
+<link rel="dns-prefetch" href="https://ums.acuityplatform.com/">
+<link rel="dns-prefetch" href="https://px.owneriq.net/">
+<link rel="dns-prefetch" href="https://cm.eyereturn.com/">
+<link rel="dns-prefetch" href="https://jadserve.postrelease.com/">
+<link rel="dns-prefetch" href="https://pmp.mxptint.net/">
+<link href="https://fonts.gstatic.com/" crossorigin="" rel="preconnect">
+<link rel="alternate" type="application/rss+xml" title="Linux Hint » Feed" href="https://linuxhint.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Linux Hint » Comments Feed" href="https://linuxhint.com/comments/feed/">
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="wp-block-library-css" href="./Users and groups addition modification_files/style.min.css" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="same-category-posts-css" href="./Users and groups addition modification_files/same-category-posts.css" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="spacexchimp_p005-bootstrap-tooltip-css-css" href="./Users and groups addition modification_files/bootstrap-tooltip.css" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="spacexchimp_p005-frontend-css-css" href="./Users and groups addition modification_files/frontend.css" type="text/css" media="all">
+<style id="spacexchimp_p005-frontend-css-inline-css" type="text/css">
+
+                    .sxc-follow-buttons {
+                        text-align: center !important;
+                    }
+                    .sxc-follow-buttons .sxc-follow-button,
+                    .sxc-follow-buttons .sxc-follow-button a,
+                    .sxc-follow-buttons .sxc-follow-button a img {
+                        width: 64px !important;
+                        height: 64px !important;
+                    }
+                    .sxc-follow-buttons .sxc-follow-button {
+                        margin: 5px !important;
+                    }
+                  
+</style>
+<link rel="stylesheet" id="vce-fonts-css" href="./Users and groups addition modification_files/css" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="vce-style-css" href="./Users and groups addition modification_files/min.css" type="text/css" media="all">
+<style id="vce-style-inline-css" type="text/css">
+body, button, input, select, textarea {font-size: 1.6rem;}.vce-single .entry-headline p{font-size: 2.2rem;}.main-navigation a{font-size: 1.4rem;}.sidebar .widget-title{font-size: 1.8rem;}.sidebar .widget, .vce-lay-c .entry-content, .vce-lay-h .entry-content {font-size: 1.4rem;}.vce-featured-link-article{font-size: 5.2rem;}.vce-featured-grid-big.vce-featured-grid .vce-featured-link-article{font-size: 3.4rem;}.vce-featured-grid .vce-featured-link-article{font-size: 2.2rem;}h1 { font-size: 4.5rem; }h2 { font-size: 4.0rem; }h3 { font-size: 3.5rem; }h4 { font-size: 2.5rem; }h5 { font-size: 2.0rem; }h6 { font-size: 1.8rem; }.comment-reply-title, .main-box-title{font-size: 2.2rem;}h1.entry-title{font-size: 4.5rem;}.vce-lay-a .entry-title a{font-size: 3.4rem;}.vce-lay-b .entry-title{font-size: 2.4rem;}.vce-lay-c .entry-title, .vce-sid-none .vce-lay-c .entry-title{font-size: 2.2rem;}.vce-lay-d .entry-title{font-size: 1.5rem;}.vce-lay-e .entry-title{font-size: 1.4rem;}.vce-lay-f .entry-title{font-size: 1.4rem;}.vce-lay-g .entry-title a, .vce-lay-g .entry-title a:hover{font-size: 3.0rem;}.vce-lay-h .entry-title{font-size: 2.4rem;}.entry-meta div,.entry-meta div a,.vce-lay-g .meta-item,.vce-lay-c .meta-item{font-size: 1.4rem;}.vce-lay-d .meta-category a,.vce-lay-d .entry-meta div,.vce-lay-d .entry-meta div a,.vce-lay-e .entry-meta div,.vce-lay-e .entry-meta div a,.vce-lay-e .fn,.vce-lay-e .meta-item{font-size: 1.3rem;}body {background-color:#f0f0f0;}body,.mks_author_widget h3,.site-description,.meta-category a,textarea {font-family: 'Poppins';font-weight: 400;}h1,h2,h3,h4,h5,h6,blockquote,.vce-post-link,.site-title,.site-title a,.main-box-title,.comment-reply-title,.entry-title a,.vce-single .entry-headline p,.vce-prev-next-link,.author-title,.mks_pullquote,.widget_rss ul li .rsswidget,#bbpress-forums .bbp-forum-title,#bbpress-forums .bbp-topic-permalink {font-family: 'Poppins';font-weight: 400;}.main-navigation a,.sidr a{font-family: 'Poppins';font-weight: 600;}.vce-single .entry-content,.vce-single .entry-headline,.vce-single .entry-footer,.vce-share-bar {width: 760px;}.vce-lay-a .lay-a-content{width: 760px;max-width: 760px;}.vce-page .entry-content,.vce-page .entry-title-page {width: 600px;}.vce-sid-none .vce-single .entry-content,.vce-sid-none .vce-single .entry-headline,.vce-sid-none .vce-single .entry-footer {width: 800px;}.vce-sid-none .vce-page .entry-content,.vce-sid-none .vce-page .entry-title-page,.error404 .entry-content {width: 750px;max-width: 750px;}body, button, input, select, textarea{color: #444444;}h1,h2,h3,h4,h5,h6,.entry-title a,.prev-next-nav a,#bbpress-forums .bbp-forum-title, #bbpress-forums .bbp-topic-permalink,.woocommerce ul.products li.product .price .amount{color: #444444;}a,.entry-title a:hover,.vce-prev-next-link:hover,.vce-author-links a:hover,.required,.error404 h4,.prev-next-nav a:hover,#bbpress-forums .bbp-forum-title:hover, #bbpress-forums .bbp-topic-permalink:hover,.woocommerce ul.products li.product h3:hover,.woocommerce ul.products li.product h3:hover mark,.main-box-title a:hover{color: #cf4d35;}.vce-square,.vce-main-content .mejs-controls .mejs-time-rail .mejs-time-current,button,input[type="button"],input[type="reset"],input[type="submit"],.vce-button,.pagination-wapper a,#vce-pagination .next.page-numbers,#vce-pagination .prev.page-numbers,#vce-pagination .page-numbers,#vce-pagination .page-numbers.current,.vce-link-pages a,#vce-pagination a,.vce-load-more a,.vce-slider-pagination .owl-nav > div,.vce-mega-menu-posts-wrap .owl-nav > div,.comment-reply-link:hover,.vce-featured-section a,.vce-lay-g .vce-featured-info .meta-category a,.vce-404-menu a,.vce-post.sticky .meta-image:before,#vce-pagination .page-numbers:hover,#bbpress-forums .bbp-pagination .current,#bbpress-forums .bbp-pagination a:hover,.woocommerce #respond input#submit,.woocommerce a.button,.woocommerce button.button,.woocommerce input.button,.woocommerce ul.products li.product .added_to_cart,.woocommerce #respond input#submit:hover,.woocommerce a.button:hover,.woocommerce button.button:hover,.woocommerce input.button:hover,.woocommerce ul.products li.product .added_to_cart:hover,.woocommerce #respond input#submit.alt,.woocommerce a.button.alt,.woocommerce button.button.alt,.woocommerce input.button.alt,.woocommerce #respond input#submit.alt:hover, .woocommerce a.button.alt:hover, .woocommerce button.button.alt:hover, .woocommerce input.button.alt:hover,.woocommerce span.onsale,.woocommerce .widget_price_filter .ui-slider .ui-slider-range,.woocommerce .widget_price_filter .ui-slider .ui-slider-handle,.comments-holder .navigation .page-numbers.current,.vce-lay-a .vce-read-more:hover,.vce-lay-c .vce-read-more:hover{background-color: #cf4d35;}#vce-pagination .page-numbers,.comments-holder .navigation .page-numbers{background: transparent;color: #cf4d35;border: 1px solid #cf4d35;}.comments-holder .navigation .page-numbers:hover{background: #cf4d35;border: 1px solid #cf4d35;}.bbp-pagination-links a{background: transparent;color: #cf4d35;border: 1px solid #cf4d35 !important;}#vce-pagination .page-numbers.current,.bbp-pagination-links span.current,.comments-holder .navigation .page-numbers.current{border: 1px solid #cf4d35;}.widget_categories .cat-item:before,.widget_categories .cat-item .count{background: #cf4d35;}.comment-reply-link,.vce-lay-a .vce-read-more,.vce-lay-c .vce-read-more{border: 1px solid #cf4d35;}.entry-meta div,.entry-meta-count,.entry-meta div a,.comment-metadata a,.meta-category span,.meta-author-wrapped,.wp-caption .wp-caption-text,.widget_rss .rss-date,.sidebar cite,.site-footer cite,.sidebar .vce-post-list .entry-meta div,.sidebar .vce-post-list .entry-meta div a,.sidebar .vce-post-list .fn,.sidebar .vce-post-list .fn a,.site-footer .vce-post-list .entry-meta div,.site-footer .vce-post-list .entry-meta div a,.site-footer .vce-post-list .fn,.site-footer .vce-post-list .fn a,#bbpress-forums .bbp-topic-started-by,#bbpress-forums .bbp-topic-started-in,#bbpress-forums .bbp-forum-info .bbp-forum-content,#bbpress-forums p.bbp-topic-meta,span.bbp-admin-links a,.bbp-reply-post-date,#bbpress-forums li.bbp-header,#bbpress-forums li.bbp-footer,.woocommerce .woocommerce-result-count,.woocommerce .product_meta{color: #9b9b9b;}.main-box-title, .comment-reply-title, .main-box-head{background: #cf4d35;color: #ffffff;}.main-box-title a{color: #ffffff;}.sidebar .widget .widget-title a{color: #ffffff;}.main-box,.comment-respond,.prev-next-nav{background: #f9f9f9;}.vce-post,ul.comment-list > li.comment,.main-box-single,.ie8 .vce-single,#disqus_thread,.vce-author-card,.vce-author-card .vce-content-outside,.mks-bredcrumbs-container,ul.comment-list > li.pingback{background: #ffffff;}.mks_tabs.horizontal .mks_tab_nav_item.active{border-bottom: 1px solid #ffffff;}.mks_tabs.horizontal .mks_tab_item,.mks_tabs.vertical .mks_tab_nav_item.active,.mks_tabs.horizontal .mks_tab_nav_item.active{background: #ffffff;}.mks_tabs.vertical .mks_tab_nav_item.active{border-right: 1px solid #ffffff;}#vce-pagination,.vce-slider-pagination .owl-controls,.vce-content-outside,.comments-holder .navigation{background: #f3f3f3;}.sidebar .widget-title{background: #ffffff;color: #dd3333;}.sidebar .widget{background: #f9f9f9;}.sidebar .widget,.sidebar .widget li a,.sidebar .mks_author_widget h3 a,.sidebar .mks_author_widget h3,.sidebar .vce-search-form .vce-search-input,.sidebar .vce-search-form .vce-search-input:focus{color: #444444;}.sidebar .widget li a:hover,.sidebar .widget a,.widget_nav_menu li.menu-item-has-children:hover:after,.widget_pages li.page_item_has_children:hover:after{color: #cf4d35;}.sidebar .tagcloud a {border: 1px solid #cf4d35;}.sidebar .mks_author_link,.sidebar .tagcloud a:hover,.sidebar .mks_themeforest_widget .more,.sidebar button,.sidebar input[type="button"],.sidebar input[type="reset"],.sidebar input[type="submit"],.sidebar .vce-button,.sidebar .bbp_widget_login .button{background-color: #cf4d35;}.sidebar .mks_author_widget .mks_autor_link_wrap,.sidebar .mks_themeforest_widget .mks_read_more,.widget .meks-instagram-follow-link {background: #f3f3f3;}.sidebar #wp-calendar caption,.sidebar .recentcomments,.sidebar .post-date,.sidebar #wp-calendar tbody{color: rgba(68,68,68,0.7);}.site-footer{background: #373941;}.site-footer .widget-title{color: #ffffff;}.site-footer,.site-footer .widget,.site-footer .widget li a,.site-footer .mks_author_widget h3 a,.site-footer .mks_author_widget h3,.site-footer .vce-search-form .vce-search-input,.site-footer .vce-search-form .vce-search-input:focus{color: #ccd2d8;}.site-footer .widget li a:hover,.site-footer .widget a,.site-info a{color: #cf4d35;}.site-footer .tagcloud a {border: 1px solid #cf4d35;}.site-footer .mks_author_link,.site-footer .mks_themeforest_widget .more,.site-footer button,.site-footer input[type="button"],.site-footer input[type="reset"],.site-footer input[type="submit"],.site-footer .vce-button,.site-footer .tagcloud a:hover{background-color: #cf4d35;}.site-footer #wp-calendar caption,.site-footer .recentcomments,.site-footer .post-date,.site-footer #wp-calendar tbody,.site-footer .site-info{color: rgba(204,210,216,0.7);}.top-header,.top-nav-menu li .sub-menu{background: #2c2d34;}.top-header,.top-header a{color: #ffffff;}.top-header .vce-search-form .vce-search-input,.top-header .vce-search-input:focus,.top-header .vce-search-submit{color: #ffffff;}.top-header .vce-search-form .vce-search-input::-webkit-input-placeholder { color: #ffffff;}.top-header .vce-search-form .vce-search-input:-moz-placeholder { color: #ffffff;}.top-header .vce-search-form .vce-search-input::-moz-placeholder { color: #ffffff;}.top-header .vce-search-form .vce-search-input:-ms-input-placeholder { color: #ffffff;}.header-1-wrapper{height: 100px;padding-top: 15px;}.header-2-wrapper,.header-3-wrapper{height: 100px;}.header-2-wrapper .site-branding,.header-3-wrapper .site-branding{top: 15px;left: 0px;}.site-title a, .site-title a:hover{color: #23282d;}.site-description{color: #aaaaaa;}.main-header{background-color: #000000;}.header-bottom-wrapper{background: #e64338;}.vce-header-ads{margin: 5px 0;}.header-3-wrapper .nav-menu > li > a{padding: 40px 15px;}.header-sticky,.sidr{background: rgba(0,0,0,0.95);}.ie8 .header-sticky{background: #000000;}.main-navigation a,.nav-menu .vce-mega-menu > .sub-menu > li > a,.sidr li a,.vce-menu-parent{color: #ffffff;}.nav-menu > li:hover > a,.nav-menu > .current_page_item > a,.nav-menu > .current-menu-item > a,.nav-menu > .current-menu-ancestor > a,.main-navigation a.vce-item-selected,.main-navigation ul ul li:hover > a,.nav-menu ul .current-menu-item a,.nav-menu ul .current_page_item a,.vce-menu-parent:hover,.sidr li a:hover,.sidr li.sidr-class-current_page_item > a,.main-navigation li.current-menu-item.fa:before,.vce-responsive-nav{color: #ff0505;}#sidr-id-vce_main_navigation_menu .soc-nav-menu li a:hover {color: #ffffff;}.nav-menu > li:hover > a,.nav-menu > .current_page_item > a,.nav-menu > .current-menu-item > a,.nav-menu > .current-menu-ancestor > a,.main-navigation a.vce-item-selected,.main-navigation ul ul,.header-sticky .nav-menu > .current_page_item:hover > a,.header-sticky .nav-menu > .current-menu-item:hover > a,.header-sticky .nav-menu > .current-menu-ancestor:hover > a,.header-sticky .main-navigation a.vce-item-selected:hover{background-color: #000000;}.search-header-wrap ul {border-top: 2px solid #ff0505;}.vce-cart-icon a.vce-custom-cart span,.sidr-class-vce-custom-cart .sidr-class-vce-cart-count {background: #ff0505;font-family: 'Poppins';}.vce-border-top .main-box-title{border-top: 2px solid #cf4d35;}.tagcloud a:hover,.sidebar .widget .mks_author_link,.sidebar .widget.mks_themeforest_widget .more,.site-footer .widget .mks_author_link,.site-footer .widget.mks_themeforest_widget .more,.vce-lay-g .entry-meta div,.vce-lay-g .fn,.vce-lay-g .fn a{color: #FFF;}.vce-featured-header .vce-featured-header-background{opacity: 0.5}.vce-featured-grid .vce-featured-header-background,.vce-post-big .vce-post-img:after,.vce-post-slider .vce-post-img:after{opacity: 0.5}.vce-featured-grid .owl-item:hover .vce-grid-text .vce-featured-header-background,.vce-post-big li:hover .vce-post-img:after,.vce-post-slider li:hover .vce-post-img:after {opacity: 0.8}.vce-featured-grid.vce-featured-grid-big .vce-featured-header-background,.vce-post-big .vce-post-img:after,.vce-post-slider .vce-post-img:after{opacity: 0.5}.vce-featured-grid.vce-featured-grid-big .owl-item:hover .vce-grid-text .vce-featured-header-background,.vce-post-big li:hover .vce-post-img:after,.vce-post-slider li:hover .vce-post-img:after {opacity: 0.8}#back-top {background: #323232}.sidr input[type=text]{background: rgba(255,255,255,0.1);color: rgba(255,255,255,0.5);}.is-style-solid-color{background-color: #cf4d35;color: #ffffff;}.wp-block-image figcaption{color: #9b9b9b;}.wp-block-cover .wp-block-cover-image-text, .wp-block-cover .wp-block-cover-text, .wp-block-cover h2, .wp-block-cover-image .wp-block-cover-image-text, .wp-block-cover-image .wp-block-cover-text, .wp-block-cover-image h2,p.has-drop-cap:not(:focus)::first-letter,p.wp-block-subhead{font-family: 'Poppins';font-weight: 400;}.wp-block-cover .wp-block-cover-image-text, .wp-block-cover .wp-block-cover-text, .wp-block-cover h2, .wp-block-cover-image .wp-block-cover-image-text, .wp-block-cover-image .wp-block-cover-text, .wp-block-cover-image h2{font-size: 2.5rem;}p.wp-block-subhead{font-size: 2.2rem;}.wp-block-button__link{background: #cf4d35}.wp-block-search .wp-block-search__button{color: #ffffff}.meta-image:hover a img,.vce-lay-h .img-wrap:hover .meta-image > img,.img-wrp:hover img,.vce-gallery-big:hover img,.vce-gallery .gallery-item:hover img,.wp-block-gallery .blocks-gallery-item:hover img,.vce_posts_widget .vce-post-big li:hover img,.vce-featured-grid .owl-item:hover img,.vce-post-img:hover img,.mega-menu-img:hover img{-webkit-transform: scale(1.1);-moz-transform: scale(1.1);-o-transform: scale(1.1);-ms-transform: scale(1.1);transform: scale(1.1);}.has-small-font-size{ font-size: 1.2rem;}.has-large-font-size{ font-size: 1.9rem;}.has-huge-font-size{ font-size: 2.3rem;}@media(min-width: 671px){.has-small-font-size{ font-size: 1.3rem;}.has-normal-font-size{ font-size: 1.6rem;}.has-large-font-size{ font-size: 2.1rem;}.has-huge-font-size{ font-size: 2.8rem;}}.has-vce-acc-background-color{ background-color: #cf4d35;}.has-vce-acc-color{ color: #cf4d35;}.has-vce-meta-background-color{ background-color: #9b9b9b;}.has-vce-meta-color{ color: #9b9b9b;}.has-vce-txt-background-color{ background-color: #444444;}.has-vce-txt-color{ color: #444444;}.has-vce-bg-background-color{ background-color: #ffffff;}.has-vce-bg-color{ color: #ffffff;}.has-vce-cat-0-background-color{ background-color: ;}.has-vce-cat-0-color{ color: ;}.site-title a{text-transform: uppercase;}.site-description{text-transform: uppercase;}.nav-menu li a{text-transform: uppercase;}.main-box-title{text-transform: uppercase;}.sidebar .widget-title{text-transform: uppercase;}.site-footer .widget-title{text-transform: uppercase;}.vce-featured-link-article{text-transform: uppercase;}
+</style>
+<link rel="stylesheet" id="vce_child_load_scripts-css" href="./Users and groups addition modification_files/style.css" type="text/css" media="screen">
+<link data-minify="1" rel="stylesheet" id="meks-author-widget-css" href="./Users and groups addition modification_files/style(1).css" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="aawp-css" href="./Users and groups addition modification_files/main.css" type="text/css" media="all">
+<link rel="stylesheet" id="__EPYT__style-css" href="./Users and groups addition modification_files/ytprefs.min.css" type="text/css" media="all">
+<style id="__EPYT__style-inline-css" type="text/css">
+
+                .epyt-gallery-thumb {
+                        width: 33.333%;
+                }
+                
+</style>
+<style id="rocket-lazyload-inline-css" type="text/css">
+.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;cursor:pointer;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:72px;width:72px;left:50%;top:50%;margin-left:-36px;margin-top:-36px;position:absolute;background:url(https://linuxhint.com/wp-content/plugins/wp-rocket/assets/img/youtube.png) no-repeat;cursor:pointer}.wp-has-aspect-ratio .rll-youtube-player{position:absolute;padding-bottom:0;width:100%;height:100%;top:0;bottom:0;left:0;right:0}
+</style>
+<link data-minify="1" rel="stylesheet" id="codecolorer-css" href="./Users and groups addition modification_files/codecolorer.css" type="text/css" media="screen">
+<script type="text/javascript" src="./Users and groups addition modification_files/jquery.min.js.download" id="jquery-core-js"></script>
+<script type="text/javascript" src="./Users and groups addition modification_files/jquery-migrate.min.js.download" id="jquery-migrate-js" defer=""></script>
+<script data-minify="1" type="text/javascript" src="./Users and groups addition modification_files/bootstrap-tooltip.js.download" id="spacexchimp_p005-bootstrap-tooltip-js-js" defer=""></script>
+<script type="text/javascript" id="__ytprefs__-js-extra">
+/* <![CDATA[ */
+var _EPYT_ = {"ajaxurl":"https:\/\/linuxhint.com\/wp-admin\/admin-ajax.php","security":"ef322abf04","gallery_scrolloffset":"20","eppathtoscripts":"https:\/\/linuxhint.com\/wp-content\/plugins\/youtube-embed-plus\/scripts\/","eppath":"https:\/\/linuxhint.com\/wp-content\/plugins\/youtube-embed-plus\/","epresponsiveselector":"[\"iframe.__youtube_prefs_widget__\"]","epdovol":"1","version":"13.4.2","evselector":"iframe.__youtube_prefs__[src], iframe[src*=\"youtube.com\/embed\/\"], iframe[src*=\"youtube-nocookie.com\/embed\/\"]","ajax_compat":"","ytapi_load":"light","pause_others":"","stopMobileBuffer":"1","vi_active":"","vi_js_posttypes":[]};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Users and groups addition modification_files/ytprefs.min.js.download" id="__ytprefs__-js" defer=""></script>
+<link rel="https://api.w.org/" href="https://linuxhint.com/wp-json/"><link rel="alternate" type="application/json" href="https://linuxhint.com/wp-json/wp/v2/posts/42169"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://linuxhint.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://linuxhint.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 5.7.1">
+<link rel="canonical" href="https://linuxhint.com/users_groups_linux_commandline/">
+<link rel="shortlink" href="https://linuxhint.com/?p=42169">
+<link rel="alternate" type="application/json+oembed" href="https://linuxhint.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flinuxhint.com%2Fusers_groups_linux_commandline%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://linuxhint.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flinuxhint.com%2Fusers_groups_linux_commandline%2F&amp;format=xml">
+<meta name="framework" content="Redux 4.1.26"><style type="text/css">.aawp .aawp-tb__row--highlight{background-color:#256aaf;}.aawp .aawp-tb__row--highlight{color:#fff;}.aawp .aawp-tb__row--highlight a{color:#fff;}</style><!-- Start Alexa Certify Javascript -->
+<script type="text/javascript">
+_atrk_opts = { atrk_acct:"R7+fr1O7kI20L7", domain:"linuxhint.com",dynamic: true};
+(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://certify-js.alexametrics.com/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+</script>
+<noscript><img src="https://certify.alexametrics.com/atrk.gif?account=R7+fr1O7kI20L7" style="display:none" height="1" width="1" alt="" /></noscript>
+<!-- End Alexa Certify Javascript -->
+<meta name="description" content="Linux offers us a lot of useful tools to keep our environment’s safety and order, assigning or denying permissions to users and groups is a primary tool on any linux system. Through the command line, it is easy to create and modify or remove users, to restrict or release permissions, while allowing us to log users activity.">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="./Users and groups addition modification_files/js"></script>
+<script src="data:text/javascript;base64,DQogd2luZG93LmRhdGFMYXllciA9IHdpbmRvdy5kYXRhTGF5ZXIgfHwgW107DQogZnVuY3Rpb24gZ3RhZygpe2RhdGFMYXllci5wdXNoKGFyZ3VtZW50cyk7fQ0KIGd0YWcoJ2pzJywgbmV3IERhdGUoKSk7DQoNCmd0YWcoJ2NvbmZpZycsICdVQS0yNTU5NTUwLTEzJywNCnsNCidkaW1lbnNpb24xJzogJ0l2YW4gVmFubmV5JywgDQonZGltZW5zaW9uMic6ICcyMDE5LTA2JywNCidkaW1lbnNpb24zJzogJ3VzZXItbWFuYWdlbWVudCcNCn0pOyANCg=="></script>
+
+<meta name="ir-site-verification-token" value="1289819848">		<style type="text/css" id="wp-custom-css">
+			div#wpbody a {
+color: #0000FF;
+}
+
+div#wpbody a:visited {
+color: #0000FF;
+}
+
+h1.entry-title {
+font-size: 38px;
+font-weight: bold;
+}
+
+h1 {
+font-size: 34px;
+font-weight: bold;
+}
+
+h2 {
+font-size: 26px;
+font-weight: bold;
+}
+
+h3 {
+font-size: 26px;
+font-weight: bold;
+}
+
+h4{
+font-weight: bold;
+}
+
+.codecolorer, .codecolorer *, .codecolorer-container, .codecolorer-container * {
+font: 1.4rem/1.4rem Monaco, Lucida Console, monospace ! important;
+}
+
+.comment-form {
+    margin-bottom: inherit;
+}
+
+.gglcptch_v1, .gglcptch_v2 {
+    text-align: -webkit-right;
+}
+
+pre {
+    background: #36363e;
+    font-family: 'Poppins';
+    font-size: 14px;
+    color: floralwhite;
+}
+
+.apsc-theme-1 .apsc-each-profile {
+    margin: 3px;
+}
+
+input[type=text] {
+    background: #fff;
+}
+div#wpbody {
+ font-family: 'Arimo', sans-serif;
+ font-weight: 400;
+ font-size: 1.14286em;
+}
+
+div#wpbody blockquote {
+ font-family: 'Arimo', sans-serif;
+ font-weight: 400;
+ font-size: 0.8em;
+ font-style: italic;
+ font-weight: bold;
+}
+
+div#newshl a {
+color: #000000;
+font-family: 'Arimo', sans-serif;
+font-weight: 400;
+font-size: 1.14286em;
+text-decoration: underline;
+}
+
+div#newshl a:visited {
+color: #000000;
+font-family: 'Arimo', sans-serif;
+font-weight: 400;
+font-size: 1.14286em;
+text-decoration: underline;
+}
+
+div#lhtable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #ba3925;
+  color: white;
+}
+
+div#lhtable tr:nth-child(even){background-color: #f2f2f2;}
+
+div#lhtable tr:hover {background-color: #ddd;}
+
+/*
+You can add your own CSS here.
+
+Click the help icon above to learn more.
+*/
+h1 {
+font-size:25px;
+color: #ba3925;}
+h2 {
+font-size:20px;
+color: #ba3925;}
+h3 {
+font-size:20px;
+color: #ba3925;
+}
+h4 {
+font-size:18px;
+color: #ba3925;
+opacity:0.9;}
+h5 {
+font-size:15px;
+color: #ba3925;}
+h6 {
+font-size:12px;
+color: #ba3925;}
+@media only screen and (max-width: 1200px){
+.codecolorer-container, .codecolorer {
+max-width: 100%;
+	}
+}
+@media only screen and (max-width: 1000px){
+.main-header {
+margin-bottom: 100px;
+	}
+}
+@media only screen and (max-width: 1000px){
+ .vce-header-ads {
+   display: block !important;
+   max-width: 100%;
+	 text-align:center;
+	}
+}
+		</style>
+		<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript><style id="voice-full-fix" type="text/css">.alignfull { max-width: 810px; position: relative; -webkit-transform: translateX(-50%); -ms-transform: translateX(-50%); transform: translateX(-50%); width: 100vw; left: 50%; }</style><style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style><style type="text/css">.adthrive-ad{margin-top:10px;margin-bottom:10px;text-align:center;overflow-x:visible;clear:both;line-height:0}.jw-flag-small-player #next-stay-container{margin:0}.jw-flag-small-player #next-video,.jw-flag-small-player #stay-video{width:75px;height:30px;line-height:30px}#next-stay-container{bottom:25%;right:0;margin:12px;position:absolute}#next-video,#stay-video{box-shadow:0 0 10px rgba(0,0,0,.5);opacity:.9;width:100px;height:40px;line-height:40px;text-align:center;cursor:pointer;background-color:#333;color:#fff;margin:10px}#next-video{box-shadow:inset 0 0 0 0 #333;transition:box-shadow 5s linear}#next-stay-container.loaded #next-video{box-shadow:inset 100px 0 0 0 red}.adthrive-ad-cls{display:flex;justify-content:center;align-items:center;flex-wrap:wrap}.adthrive-ad-cls>div,.adthrive-ad-cls>iframe{flex-basis:100%}.adthrive-interstitial{margin-top:0;margin-bottom:0}.adthrive-native-recipe{display:inline-block}.adthrive-stuck.adthrive-sticky.adthrive-header,.adthrive-stuck.adthrive-sticky.adthrive-sidebar{position:fixed;top:0;z-index:9999}.adthrive-stuck.adthrive-header{margin-top:0}.adthrive-sticky.adthrive-footer{text-align:center;margin:0;width:100%;overflow:hidden;position:fixed;left:0;bottom:0;z-index:99999;background-color:hsla(0,0%,100%,.8);border-top:2px solid hsla(0,0%,88.2%,.8)}.adthrive-sticky.adthrive-footer>.adthrive-close{cursor:pointer;color:#b2b2b2;border:1px solid #b2b2b2;border-radius:20px;background:#fff;line-height:20px;display:inline-block;font-size:20px;font-family:arial,sans-serif;padding:0 5px;position:absolute;top:5px;right:5px}.adthrive-device-desktop .adthrive-sticky.adthrive-footer>.adthrive-close{top:10px;right:10px}#_inv_voicefive___{display:none}.adthrive-ccpa-link,.adthrive-footer-message,.adthrive-privacy-preferences{text-align:center;margin-top:5px}.adthrive-ccpa-link,.adthrive-ccpa-link span,.adthrive-footer-message span,.adthrive-privacy-preferences a{font-family:Arial,Helvetica Neue,Helvetica,sans-serif;font-size:13px;color:#b2b2b2}.adthrive-ccpa-link a{text-decoration:underline;cursor:pointer}.adthrive-device-phone .adthrive-footer-message{margin-bottom:60px}.adthrive-footer-message{margin-bottom:100px}.adthrive-footer-message>span{text-transform:uppercase;border-top:1px solid #b2b2b2;padding-top:5px}.adthrive-collapse-player{width:90%;border-top:1px solid #dbdbdb;border-bottom:1px solid #dbdbdb;padding:8px!important;margin-left:auto;margin-right:auto}.adthrive-player-position.adthrive-collapse-float{position:fixed;width:300px;z-index:2147483644}.adthrive-player-position.adthrive-collapse-float.adthrive-collapse-right{top:0;right:5px}.adthrive-player-position.adthrive-collapse-float.adthrive-collapse-bottom-right{bottom:100px;right:5px}.adthrive-player-position.adthrive-collapse-float.adthrive-collapse-bottom-left{bottom:100px;left:5px}.adthrive-player-position.adthrive-collapse-float>.adthrive-player-title{display:none}.adthrive-player-position.adthrive-collapse-sticky{padding-top:20px;padding-bottom:20px;position:fixed;z-index:9999}.adthrive-player-position.adthrive-collapse-sticky>.adthrive-player-title{display:none}.adthrive-player-position.adthrive-collapse-mobile{position:fixed;width:300px;z-index:99998}.adthrive-player-position.adthrive-collapse-mobile.adthrive-collapse-medium,.adthrive-player-position.adthrive-collapse-mobile.adthrive-collapse-small{width:272px}.adthrive-player-position.adthrive-collapse-mobile.adthrive-collapse-top-right{top:26px;right:10px}.adthrive-player-position.adthrive-collapse-mobile.adthrive-collapse-top-left{top:26px;left:5px}.adthrive-player-position.adthrive-collapse-mobile.adthrive-collapse-bottom-left{bottom:52px;left:5px}.adthrive-player-position.adthrive-collapse-mobile.adthrive-collapse-bottom-right{bottom:52px;right:10px}.adthrive-player-position.adthrive-collapse-mobile>.adthrive-player-title{display:none}.adthrive-sekindo-mobile-center{display:flex;flex-direction:row;justify-content:center;text-align:center}.adthrive-wrapper-close{margin-left:auto;margin-right:0;height:36px;min-width:36px;justify-content:center;align-items:center;font-size:36px;color:#fff}.adthrive-wrapper-float-close{float:right;display:none;margin-bottom:5px;cursor:pointer}.adthrive-wrapper-bar{display:none;background-color:#595959;font-family:Arial,Helvetica,sans-serif;border-top-left-radius:5px;border-top-right-radius:5px;height:36px}.adthrive-video-title{font-size:13px;font-weight:700;text-decoration:none;color:#fff}.adthrive-wrapper-title-wrapper{display:inline-flex;min-width:0;margin-left:10px;margin-right:10px;justify-content:center;align-items:center}.adthrive-video-text-cutoff{text-overflow:ellipsis;overflow:hidden;white-space:nowrap;color:#fff}.adthrive-wrapper-title-wrapper>a>svg,.adthrive-wrapper-title-wrapper>div>svg{vertical-align:middle;fill:#fff;margin-right:5px}.adthrive-wrapper-title-wrapper>a{text-decoration:none}</style><meta http-equiv="origin-trial" content="A+b/H0b8RPXNaJgaNFpO0YOFuGK6myDQXlwnJB3SwzvNMfcndat4DZYMrP4ClJIzYWo3/yP2S+8FTZ/lpqbPAAEAAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="A9ZgbRtm4pU3oZiuNzOsKcC8ppFSZdcjP2qYcdQrFKVzkmiWH1kdYY1Mi9x7G8+PS8HV9Ha9Cz0gaMdKsiVZIgMAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AxL6oBxcpn5rQDPKSAs+d0oxNyJYq2/4esBUh3Yx5z8QfcLu+AU8iFCXYRcr/CEEfDnkxxLTsvXPJFQBxHfvkgMAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A9KPtG5kl3oLTk21xqynDPGQ5t18bSOpwt0w6kGa6dEWbuwjpffmdUpR3W+faZDubGT+KIk2do0BX2ca16x8qAcAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A3HucHUo1oW9s+9kIKz8mLkbcmdaj5lxt3eiIMp1Nh49dkkBlg1Fhg4Fd/r0vL69mRRA36YutI9P/lJUfL8csQoAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A0OysezhLoCRYomumeYlubLurZTCmsjTb087OvtCy95jNM65cfEsbajrJnhaGwiTxhz38ZZbm+UhUwQuXfVPTg0AAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="AxoOxdZQmIoA1WeAPDixRAeWDdgs7ZtVFfH2y19ziTgD1iaHE5ZGz2UdSjubkWvob9C5PrjUfkWi4ZSLgWk3Xg8AAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A7+rMYR5onPnACrz+niKSeFdH3xw1IyHo2AZSHmxrofRk9w4HcQPMYcpBUKu6OQ6zsdxf4m/vqa6tG6Na4OLpAQAAAB4eyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AwfG8hAcHnPa/kJ1Co0EvG/K0F9l1s2JZGiDLt2mhC3QI5Fh4qmsmSwrWObZFbRC9ieDaSLU6lHRxhGUF/i9sgoAAACBeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AwQ7dCmHkvR6FuOFxAuNnktYSQrGbL4dF+eBkrwNLALc69Wr//PnO1yzns3pjUoCaYbKHtVcnng2hU+8OUm0PAYAAACHeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AysVDPGQTLD/Scn78x4mLwB1tMfje5jwUpAAzGRpWsr1NzoN7MTFhT3ClmImi2svDZA7V6nWGIV8YTPsSRTe0wYAAACHeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><script src="./Users and groups addition modification_files/pubads_impl_2021050601.js.download" async=""></script><meta http-equiv="origin-trial" content="A40LeNF9EbC6plguMZ/oPSMpLZfRtXFuJB2suFqW/ScvndYKCymISjYA7nNcrKGOQx2flBu88U+NWqbStUXwXgQAAACCeyJvcmlnaW4iOiJodHRwczovL2Fkcy5hZHRocml2ZS5jb206NDQzIiwiZmVhdHVyZSI6IkludGVyZXN0Q29ob3J0QVBJIiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><link rel="stylesheet" type="text/css" href="./Users and groups addition modification_files/ads.min.css"><link rel="preload" href="./Users and groups addition modification_files/integrator.js.download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js.download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js(1).download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js(1).download"></script><link rel="prefetch" href="https://4671ccff6e97949e57ee952d296f71d8.safeframe.googlesyndication.com/safeframe/1-0-38/html/container.html"><link rel="prefetch" href="https://tpc.googlesyndication.com/safeframe/1-0-38/html/container.html"><link rel="preload" href="./Users and groups addition modification_files/integrator.js.download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js.download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js(1).download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js(1).download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js.download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js.download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js(1).download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js(1).download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js.download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js.download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js(1).download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js(1).download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js.download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js.download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js(1).download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js(1).download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js.download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js.download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js(1).download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js(1).download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js.download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js.download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js(1).download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js(1).download"></script><meta http-equiv="origin-trial" content="A4RpyXPHPXj2Tt0KMMrya+U6IibH8/6yFLknmyK5ZwpgUNYhhwGyllkLZNqKedteT7fKzxsI8p/Pbpbd4tEJOQoAAAB8eyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5uZXQ6NDQzIiwiZmVhdHVyZSI6IkludGVyZXN0Q29ob3J0QVBJIiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><link rel="preload" href="./Users and groups addition modification_files/integrator.js.download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js.download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js(1).download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js(1).download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js.download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js.download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js(1).download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js(1).download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js.download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js.download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js(1).download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js(1).download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js.download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js.download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js(1).download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js(1).download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js.download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js.download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js(1).download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js(1).download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js.download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js.download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js(1).download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js(1).download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js.download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js.download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js(1).download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js(1).download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js.download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js.download"></script><link rel="preload" href="./Users and groups addition modification_files/integrator.js(1).download" as="script"><script type="text/javascript" src="./Users and groups addition modification_files/integrator.js(1).download"></script></head>
+
+<body class="post-template-default single single-post postid-42169 single-format-standard wp-embed-responsive aawp-custom vce-sid-right voice-v_2_9_2 voice-child adthrive-device-desktop"><div data-v-7e2550d6="" class="odm_extension image_downloader_wrapper" wfd-id="153"><!----></div>
+
+
+<div id="vce-main" wfd-id="6">
+
+<header id="header" class="main-header">
+<div class="container header-main-area header-3-wrapper" wfd-id="140">	
+		<div class="vce-res-nav" wfd-id="152">
+	<a class="vce-responsive-nav" href="https://linuxhint.com/users_groups_linux_commandline/#sidr-main"><i class="fa fa-bars"></i></a>
+</div>
+<div class="site-branding" wfd-id="150">
+	<span class="site-title" wfd-id="151"><a href="https://linuxhint.com/" rel="home" class="has-logo"><picture class="vce-logo"><source media="(min-width: 1024px)" srcset="https://linuxhint.com/wp-content/uploads/2019/11/Logo-final.png"><source srcset="https://linuxhint.com/wp-content/uploads/2019/11/Logo-final.png"><img src="./Users and groups addition modification_files/Logo-final.png" alt="Linux Hint" class="lazyloaded" data-ll-status="loaded"><noscript><img src="https://linuxhint.com/wp-content/uploads/2019/11/Logo-final.png" alt="Linux Hint"></noscript></picture></a></span></div>
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+	<ul id="vce_main_navigation_menu" class="nav-menu" wfd-id="141"><li id="menu-item-18534" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-18534" wfd-id="149"><a href="https://linuxhint.com/">Home</a></li><li id="menu-item-19816" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19816" wfd-id="148"><a href="https://linuxhint.com/subscribe-to-linuxhint-com/">Subscribe!</a></li><li id="menu-item-101079" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-101079" wfd-id="147"><a href="https://linuxhint.news/">Newsletter</a></li><li id="menu-item-33966" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33966" wfd-id="146"><a href="https://linuxhint.com/write-for-linuxhint-com/">Write For Us</a></li><li id="menu-item-23466" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23466" wfd-id="145"><a href="https://linuxhint.com/policies-and-privacy/">Privacy</a></li><li id="menu-item-37290" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-37290" wfd-id="144"><a href="https://linuxhint.com/?page_id=37286">Terms</a></li><li class="search-header-wrap" wfd-id="142"><a class="search_header" href="javascript:void(0)"><i class="fa fa-search"></i></a><ul class="search-header-form-ul" wfd-id="143"><li><form class="vce-search-form" action="https://linuxhint.com/" method="get">
+	<input name="s" class="vce-search-input" size="20" type="text" value="Type here to search..." onfocus="(this.value == &#39;Type here to search...&#39;) &amp;&amp; (this.value = &#39;&#39;)" onblur="(this.value == &#39;&#39;) &amp;&amp; (this.value = &#39;Type here to search...&#39;)" placeholder="Type here to search..." wfd-id="155">
+		<button type="submit" class="vce-search-submit" wfd-id="157"><i class="fa fa-search"></i></button> 
+</form></li></ul></li></ul></nav></div></header>
+
+
+<div id="main-wrapper" wfd-id="7"><div id="AdThrive_Header_1_desktop" class="adthrive-ad adthrive-header adthrive-header-1 adthrive-ad-cls" style="min-height: 90px;" wfd-id="139"><div id="google_ads_iframe_/18190176/AdThrive_Header_1/5c9b6001b80bec0dfaf0b493_0__container__" wfd-id="164" style="border: 0pt none; width: 728px; height: 0px;"></div></div>
+
+
+
+
+
+<div id="content" class="container site-content vce-sid-right" wfd-id="14">
+	
+			
+	<div id="primary" class="vce-main-content" wfd-id="26">
+
+		<main id="main" class="main-box main-box-single">
+
+		
+			<article id="post-42169" class="vce-single post-42169 post type-post status-publish format-standard has-post-thumbnail hentry category-user-management">
+
+			<header class="entry-header">
+							<span class="meta-category" wfd-id="138"><a href="https://linuxhint.com/category/user-management/" class="category-2160">User Management</a></span>
+			
+			<h1 class="entry-title">Users and groups administrations from the command line in Linux</h1>
+			<div class="entry-meta" wfd-id="132"><div class="meta-item date" wfd-id="136"><span class="updated" wfd-id="137">2 years ago</span></div><div class="meta-item author" wfd-id="133"><span class="vcard author" wfd-id="134"><span class="fn" wfd-id="135">by <a href="https://linuxhint.com/author/ivan_vanney/">Ivan Vanney</a></span></span></div></div>
+		</header>
+	
+	
+	
+		
+	    
+		
+	<div class="entry-content" wfd-id="36">
+		<div id="wpbody" wfd-id="38">
+<p>Linux offers us a lot of useful tools to keep our environment’s safety and order, assigning or denying permissions to users and groups is a primary tool on any linux system. For security reasons only root users and users within the <strong><em>sudo</em></strong> group are able to manage users and groups.Through the command line, it is easy to create and modify or remove users, to restrict or release permissions, while allowing us to log users activity.</p>
+<p>To manage permissions lets start by becoming the root user.&nbsp; Enter the command “<strong><em>su</em></strong>” to become root and press “<strong><em>Enter</em></strong>”, type the password when requested. If you don’t have root access we must use the <strong><em>sudo</em></strong> command before running a privileged command. For information on sudo you can read <a href="https://linuxhint.com/sudo_linux/">Managing sudo privileges</a>.</p>
+<p><strong><em>Note</em>: remember Linux is a case sensitive OS.&nbsp;</strong></p><div id="AdThrive_Content_1_desktop" class="adthrive-ad adthrive-content adthrive-content-1 adthrive-ad-cls" style="min-height: 250px;" wfd-id="131"><div id="google_ads_iframe_/18190176/AdThrive_Content_1/5c9b6001b80bec0dfaf0b493_0__container__" wfd-id="163" style="border: 0pt none; width: 728px; height: 0px;"></div></div>
+<p><img class="aligncenter size-full wp-image-42171 lazyloaded" src="./Users and groups addition modification_files/1-24.png" alt="" width="734" height="488" sizes="(max-width: 734px) 100vw, 734px" srcset="https://linuxhint.com/wp-content/uploads/2019/06/1-24.png 734w, https://linuxhint.com/wp-content/uploads/2019/06/1-24-300x199.png 300w" data-ll-status="loaded"><noscript><img class="aligncenter size-full wp-image-42171" src="https://linuxhint.com/wp-content/uploads/2019/06/1-24.png" alt="" width="734" height="488" srcset="https://linuxhint.com/wp-content/uploads/2019/06/1-24.png 734w, https://linuxhint.com/wp-content/uploads/2019/06/1-24-300x199.png 300w" sizes="(max-width: 734px) 100vw, 734px" /></noscript></p>
+<p>After authenticating we can manage users and groups.</p>
+<h2><strong>Creating groups under Linux</strong><strong>:</strong></h2>
+<p>To create groups we’ll use first the command “<strong><em>groupadd</em></strong>” followed by the group’s name. The syntax is: “<strong><em>groupadd &lt;group-name&gt;</em></strong>”.</p>
+<p>In the following picture is an example where I create three groups: sector1, sector2 and sector3. To do it on the command line type:</p><div id="AdThrive_Content_2_desktop" class="adthrive-ad adthrive-content adthrive-content-1 adthrive-ad-cls" style="min-height: 250px;" wfd-id="130"><div id="google_ads_iframe_/18190176/AdThrive_Content_2/5c9b6001b80bec0dfaf0b493_0__container__" wfd-id="162" style="border: 0pt none; width: 728px; height: 0px;"></div></div>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;" wfd-id="128"><div class="bash codecolorer" wfd-id="129">groupadd sector1<br>
+groupadd sector2<br>
+groupadd sector3</div></div>
+<p>Once the groups are created we can create users to be assigned to the groups.</p>
+<p><img class="aligncenter size-full wp-image-42172 lazyloaded" src="./Users and groups addition modification_files/2-24.png" alt="" width="734" height="488" sizes="(max-width: 734px) 100vw, 734px" srcset="https://linuxhint.com/wp-content/uploads/2019/06/2-24.png 734w, https://linuxhint.com/wp-content/uploads/2019/06/2-24-300x199.png 300w" data-ll-status="loaded"><noscript><img class="aligncenter size-full wp-image-42172" src="https://linuxhint.com/wp-content/uploads/2019/06/2-24.png" alt="" width="734" height="488" srcset="https://linuxhint.com/wp-content/uploads/2019/06/2-24.png 734w, https://linuxhint.com/wp-content/uploads/2019/06/2-24-300x199.png 300w" sizes="(max-width: 734px) 100vw, 734px" /></noscript></p><div id="AdThrive_Content_3_desktop" class="adthrive-ad adthrive-content adthrive-content-1 adthrive-ad-cls" style="min-height: 250px;" wfd-id="127"><div id="google_ads_iframe_/18190176/AdThrive_Content_3/5c9b6001b80bec0dfaf0b493_0__container__" wfd-id="161" style="border: 0pt none; width: 728px; height: 0px;"></div></div>
+<h3><strong>Creating users under Linux:</strong></h3>
+<p>Using the command “<strong><em>useradd</em></strong>” we can add a user to our system. The proper syntax is “<strong><em>useradd [options] &lt;username&gt;</em></strong>”</p>
+<p>Among the most used options we have:</p>
+<p><strong><em>-g</em></strong>&nbsp;&nbsp; Main user group (<strong><em>gid</em></strong>)<br>
+<strong><em>-d </em></strong>&nbsp;&nbsp;User Home directory, by default located at <strong><em>/home/&lt;UserName&gt;</em></strong><br>
+<strong><em>-m&nbsp; </em></strong>Create Home directory in case it doesn’t exist.<br>
+<strong><em>-s </em></strong>&nbsp;&nbsp;Assign a specific shell to the user, by default it is <strong><em>/bin/bash</em></strong>.</p>
+<p>As an example we will create the user <strong><em>nicolas</em></strong> and will assign him the group <strong><em>sector1</em></strong>, also we’ll define the user’s home and shell.</p>
+<p>The syntax is:</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:700px;" wfd-id="116"><div class="bash codecolorer" wfd-id="117">useradd <span class="re5" wfd-id="126">-g</span> sector1 <span class="re5" wfd-id="125">-d</span> <span class="sy0" wfd-id="124">/</span>home<span class="sy0" wfd-id="123">/</span>nicolas <span class="re5" wfd-id="122">-m</span> <span class="re5" wfd-id="121">-s</span> <span class="sy0" wfd-id="120">/</span>bin<span class="sy0" wfd-id="119">/</span><span class="kw2" wfd-id="118">bash</span> nicolas</div></div>
+<p><img class="aligncenter size-full wp-image-42173 lazyloaded" src="./Users and groups addition modification_files/3-23.png" alt="" width="959" height="498" sizes="(max-width: 959px) 100vw, 959px" srcset="https://linuxhint.com/wp-content/uploads/2019/06/3-23.png 959w, https://linuxhint.com/wp-content/uploads/2019/06/3-23-300x156.png 300w, https://linuxhint.com/wp-content/uploads/2019/06/3-23-768x399.png 768w, https://linuxhint.com/wp-content/uploads/2019/06/3-23-810x421.png 810w, https://linuxhint.com/wp-content/uploads/2019/06/3-23-375x195.png 375w" data-ll-status="loaded"><noscript><img class="aligncenter size-full wp-image-42173" src="https://linuxhint.com/wp-content/uploads/2019/06/3-23.png" alt="" width="959" height="498" srcset="https://linuxhint.com/wp-content/uploads/2019/06/3-23.png 959w, https://linuxhint.com/wp-content/uploads/2019/06/3-23-300x156.png 300w, https://linuxhint.com/wp-content/uploads/2019/06/3-23-768x399.png 768w, https://linuxhint.com/wp-content/uploads/2019/06/3-23-810x421.png 810w, https://linuxhint.com/wp-content/uploads/2019/06/3-23-375x195.png 375w" sizes="(max-width: 959px) 100vw, 959px" /></noscript></p><div id="AdThrive_Content_4_desktop" class="adthrive-ad adthrive-content adthrive-content-1 adthrive-ad-cls" style="min-height: 250px;" wfd-id="115"><div id="google_ads_iframe_/18190176/AdThrive_Content_4/5c9b6001b80bec0dfaf0b493_0__container__" wfd-id="160" style="border: 0pt none; width: 728px; height: 0px;"></div></div>
+<p>Now we’ll do the same with user martin to be added to group sector2, and a third user ivan for sector3. We’ll use the same syntax:</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:700px;" wfd-id="104"><div class="bash codecolorer" wfd-id="105">useradd <span class="re5" wfd-id="114">-g</span> sector2 <span class="re5" wfd-id="113">-d</span> <span class="sy0" wfd-id="112">/</span>home<span class="sy0" wfd-id="111">/</span>martin <span class="re5" wfd-id="110">-m</span> <span class="re5" wfd-id="109">-s</span> <span class="sy0" wfd-id="108">/</span>bin<span class="sy0" wfd-id="107">/</span><span class="kw2" wfd-id="106">bash</span> martin</div></div>
+<p>then</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:700px;" wfd-id="93"><div class="bash codecolorer" wfd-id="94">useradd <span class="re5" wfd-id="103">-g</span> sector3 <span class="re5" wfd-id="102">-d</span> <span class="sy0" wfd-id="101">/</span>home<span class="sy0" wfd-id="100">/</span>ivan <span class="re5" wfd-id="99">-m</span> <span class="re5" wfd-id="98">-s</span> <span class="sy0" wfd-id="97">/</span>bin<span class="sy0" wfd-id="96">/</span><span class="kw2" wfd-id="95">bash</span> ivan</div></div>
+<h3><strong>Command adduser vs useradd</strong></h3>
+<p>While the command <strong><em>useradd</em></strong> runs a system binary file the command adduser is a perl script to interact with <strong><em>useradd</em></strong>. With the <strong><em>adduser</em></strong> command, the advantage is the home is created automatically. If using the command adduser we need to specify the <strong><em>-m</em></strong> option.</p>
+<h3><strong>Creating or changing a user password under Linux:</strong></h3>
+<p>After adding a user with the command “<strong><em>useradd</em></strong>” we need to set a password for the user using the command “<strong><em>passwd</em></strong>”. Remember Linux is case sensitive.</p>
+<p>In the following example we’ll create a password for the user nicolas using the following syntax:</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;" wfd-id="90"><div class="bash codecolorer" wfd-id="91"><span class="kw2" wfd-id="92">passwd</span> nicolas</div></div>
+<p>Then it will request for password and confirmation, after confirmation the password will be established. We can know the process succeeded when the system returns “<strong><em>password updated successfully</em></strong>” like in the image:</p><div id="AdThrive_Content_5_desktop" class="adthrive-ad adthrive-content adthrive-content-1 adthrive-ad-cls" style="min-height: 250px;" wfd-id="89"><div id="google_ads_iframe_/18190176/AdThrive_Content_5/5c9b6001b80bec0dfaf0b493_0__container__" wfd-id="159" style="border: 0pt none; width: 728px; height: 0px;"></div></div>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:680px;" wfd-id="82"><div class="bash codecolorer" wfd-id="83"><span class="kw2" wfd-id="88">passwd</span> nicolas<br>
+Enter new UNIX password: <span class="br0" wfd-id="87">(</span>ingresar contraseña<span class="br0" wfd-id="86">)</span><br>
+Retype new UNIX password: <span class="br0" wfd-id="85">(</span>repetir contraseña<span class="br0" wfd-id="84">)</span><br>
+passwd: password updated successfully</div></div>
+<p><img class="aligncenter size-full wp-image-42174 lazyloaded" src="./Users and groups addition modification_files/4-24.png" alt="" width="734" height="488" sizes="(max-width: 734px) 100vw, 734px" srcset="https://linuxhint.com/wp-content/uploads/2019/06/4-24.png 734w, https://linuxhint.com/wp-content/uploads/2019/06/4-24-300x199.png 300w" data-ll-status="loaded"><noscript><img class="aligncenter size-full wp-image-42174" src="https://linuxhint.com/wp-content/uploads/2019/06/4-24.png" alt="" width="734" height="488" srcset="https://linuxhint.com/wp-content/uploads/2019/06/4-24.png 734w, https://linuxhint.com/wp-content/uploads/2019/06/4-24-300x199.png 300w" sizes="(max-width: 734px) 100vw, 734px" /></noscript></p>
+<h3><strong>Modifying users under Linux:</strong></h3>
+<p>We can edit the user’s username, his home directory, his shell and groups to which he belongs among more options. For this we’ll use the command “<strong><em>usermod</em></strong>”.</p><div id="AdThrive_Content_6_desktop" class="adthrive-ad adthrive-content adthrive-content-1 adthrive-ad-cls" style="min-height: 250px;" wfd-id="81"><div id="google_ads_iframe_/18190176/AdThrive_Content_6/5c9b6001b80bec0dfaf0b493_0__container__" wfd-id="169" style="border: 0pt none; width: 728px; height: 0px;"></div></div>
+<p>As an example we’ll modify the user nicholas’ home directory which we previously defined as <strong><em>/home/nicolas</em></strong> and we’ll replace it for<strong><em> /home/nico1</em></strong>.</p>
+<p>To do it run:</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;" wfd-id="76"><div class="bash codecolorer" wfd-id="77">usermod <span class="re5" wfd-id="80">-d</span> <span class="sy0" wfd-id="79">/</span>home<span class="sy0" wfd-id="78">/</span>nico1 nicolas</div></div>
+<p>The previous command updated the user’s home.</p>
+<p><img class="aligncenter size-full wp-image-42175 lazyloaded" src="./Users and groups addition modification_files/5-23.png" alt="" width="734" height="488" sizes="(max-width: 734px) 100vw, 734px" srcset="https://linuxhint.com/wp-content/uploads/2019/06/5-23.png 734w, https://linuxhint.com/wp-content/uploads/2019/06/5-23-300x199.png 300w" data-ll-status="loaded"><noscript><img class="aligncenter size-full wp-image-42175" src="https://linuxhint.com/wp-content/uploads/2019/06/5-23.png" alt="" width="734" height="488" srcset="https://linuxhint.com/wp-content/uploads/2019/06/5-23.png 734w, https://linuxhint.com/wp-content/uploads/2019/06/5-23-300x199.png 300w" sizes="(max-width: 734px) 100vw, 734px" /></noscript></p><div id="AdThrive_Content_7_desktop" class="adthrive-ad adthrive-content adthrive-content-1 adthrive-ad-cls" style="min-height: 250px;" wfd-id="75"><div id="google_ads_iframe_/18190176/AdThrive_Content_7/5c9b6001b80bec0dfaf0b493_0__container__" wfd-id="168" style="border: 0pt none; width: 728px; height: 0px;"></div></div>
+<h3><strong>Lock/Unlock user account</strong></h3>
+<p>We can also lock a user account. In the following example we’ll lock user ivan account. The parameter -L (lock) will block the user account. The syntax is:</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;" wfd-id="72"><div class="bash codecolorer" wfd-id="73">usermod <span class="re5" wfd-id="74">-L</span> ivan</div></div>
+<p>To enable a locked user we can use the -U (Unlock) parameter. In the following example we will unlock the user ivan:</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;" wfd-id="69"><div class="bash codecolorer" wfd-id="70">usermod <span class="re5" wfd-id="71">-U</span> ivan</div></div>
+<p>The user is now unlocked.</p>
+<p><img class="aligncenter size-full wp-image-42176 lazyloaded" src="./Users and groups addition modification_files/6-21.png" alt="" width="734" height="488" sizes="(max-width: 734px) 100vw, 734px" srcset="https://linuxhint.com/wp-content/uploads/2019/06/6-21.png 734w, https://linuxhint.com/wp-content/uploads/2019/06/6-21-300x199.png 300w" data-ll-status="loaded"><noscript><img class="aligncenter size-full wp-image-42176" src="https://linuxhint.com/wp-content/uploads/2019/06/6-21.png" alt="" width="734" height="488" srcset="https://linuxhint.com/wp-content/uploads/2019/06/6-21.png 734w, https://linuxhint.com/wp-content/uploads/2019/06/6-21-300x199.png 300w" sizes="(max-width: 734px) 100vw, 734px" /></noscript></p><div id="AdThrive_Content_8_desktop" class="adthrive-ad adthrive-content adthrive-content-1 adthrive-ad-cls" style="min-height: 250px;" wfd-id="68"><div id="google_ads_iframe_/18190176/AdThrive_Content_8/5c9b6001b80bec0dfaf0b493_0__container__" wfd-id="167" style="border: 0pt none; width: 728px; height: 0px;"></div></div>
+<h3><strong>Deleting users under Linux:</strong></h3>
+<p>We can remove a user with the command <strong><em>userdel </em></strong>followed by the username. We can also combine parameters, among most used options we have:</p>
+<p><strong><em>-f</em></strong> remove user files.<br>
+<strong><em>-r</em></strong> remove user home and mail tail.</p>
+<p>In the following example we’ll delete the user account “<strong><em>ivan</em></strong>”</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;" wfd-id="66"><div class="bash codecolorer" wfd-id="67">userdel ivan</div></div>
+<p><strong>Note</strong>:&nbsp; The command “userdel” won’t remove the user if is running process.</p>
+<h3><strong>Modifying groups under Linux:</strong></h3>
+<p>In order to modify groups we’ll use the command “<strong><em>groupmod</em></strong>”. This command allows to modify a group name or user gid. The syntax is:</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:700px;" wfd-id="62"><div class="bash codecolorer" wfd-id="63">groupmod <span class="re5" wfd-id="65">-g</span> newgid <span class="re5" wfd-id="64">-n</span> newname&nbsp; groupname</div></div>
+<p>In the following example we’ll modify the group name for “<strong><em>sector3</em></strong>” to “<strong><em>contaduria</em></strong>”</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;" wfd-id="59"><div class="bash codecolorer" wfd-id="60">groupmod <span class="re5" wfd-id="61">-n</span> contaduria sector3</div></div>
+<p><img class="aligncenter size-full wp-image-42177 lazyloaded" src="./Users and groups addition modification_files/7-20.png" alt="" width="734" height="488" sizes="(max-width: 734px) 100vw, 734px" srcset="https://linuxhint.com/wp-content/uploads/2019/06/7-20.png 734w, https://linuxhint.com/wp-content/uploads/2019/06/7-20-300x199.png 300w" data-ll-status="loaded"><noscript><img class="aligncenter size-full wp-image-42177" src="https://linuxhint.com/wp-content/uploads/2019/06/7-20.png" alt="" width="734" height="488" srcset="https://linuxhint.com/wp-content/uploads/2019/06/7-20.png 734w, https://linuxhint.com/wp-content/uploads/2019/06/7-20-300x199.png 300w" sizes="(max-width: 734px) 100vw, 734px" /></noscript></p>
+<h3><strong>Deleting groups under Linux:</strong></h3>
+<p>We can remove a group using the command “groupdel” followed by the group name. For example, to remove the group sector4 we’ll use the following syntax:</p><div id="AdThrive_Content_9_desktop" class="adthrive-ad adthrive-content adthrive-content-1 adthrive-ad-cls" style="min-height: 250px;" wfd-id="58"><div id="google_ads_iframe_/18190176/AdThrive_Content_9/5c9b6001b80bec0dfaf0b493_0__container__" wfd-id="166" style="border: 0pt none; width: 728px; height: 0px;"></div></div>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:700px;" wfd-id="52"><div class="bash codecolorer" wfd-id="53">groupdel&nbsp; <span class="br0" wfd-id="57">[</span>options<span class="br0" wfd-id="56">]</span> <span class="sy0" wfd-id="55">&lt;</span>groupname<span class="sy0" wfd-id="54">&gt;</span></div></div>
+<p><em>In this case it would be just:</em></p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;" wfd-id="50"><div class="bash codecolorer" wfd-id="51">groupdel sector4</div></div>
+<p><img class="aligncenter size-full wp-image-42178 lazyloaded" src="./Users and groups addition modification_files/8-20.png" alt="" width="734" height="488" sizes="(max-width: 734px) 100vw, 734px" srcset="https://linuxhint.com/wp-content/uploads/2019/06/8-20.png 734w, https://linuxhint.com/wp-content/uploads/2019/06/8-20-300x199.png 300w" data-ll-status="loaded"><noscript><img class="aligncenter size-full wp-image-42178" src="https://linuxhint.com/wp-content/uploads/2019/06/8-20.png" alt="" width="734" height="488" srcset="https://linuxhint.com/wp-content/uploads/2019/06/8-20.png 734w, https://linuxhint.com/wp-content/uploads/2019/06/8-20-300x199.png 300w" sizes="(max-width: 734px) 100vw, 734px" /></noscript></p><div id="AdThrive_Content_10_desktop" class="adthrive-ad adthrive-content adthrive-content-1 adthrive-ad-cls" style="min-height: 250px;" wfd-id="49"><div id="google_ads_iframe_/18190176/AdThrive_Content/5c9b6001b80bec0dfaf0b493_0__container__" style="border: 0pt none; width: 728px; height: 0px;"></div></div>
+<p><strong>Note</strong>: If another user is a member of the group we try to remove, the command won’t remove the group.</p>
+<h3><strong>Graphic user and groups management under Ubuntu Linux (Gnome)<br>
+</strong></h3>
+<p>Ubuntu offers a graphical management for users and groups. The interface is user friendly, intuitive and easy to use.</p>
+<p>If we haven’t installed this interface on the terminal run:</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;" wfd-id="46"><div class="bash codecolorer" wfd-id="47">apt <span class="kw2" wfd-id="48">install</span> gnome-system-tools</div></div>
+<p>When asked for confirmation press “<strong><em>Y</em></strong>” and “<strong><em>enter</em></strong>”</p>
+<p>The following NEW packages will be installed</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;" wfd-id="40"><div class="bash codecolorer" wfd-id="41">Do you want to <span class="kw3" wfd-id="45">continue</span>? <span class="br0" wfd-id="44">[</span>Y<span class="sy0" wfd-id="43">/</span>n<span class="br0" wfd-id="42">]</span> y</div></div>
+<p>Once finished we can run the tool from the command line as “<strong><em>users-admin</em></strong>”</p>
+<p><img class="aligncenter size-full wp-image-42179 lazyloaded" src="./Users and groups addition modification_files/9-20.png" alt="" width="650" height="430" sizes="(max-width: 650px) 100vw, 650px" srcset="https://linuxhint.com/wp-content/uploads/2019/06/9-20.png 650w, https://linuxhint.com/wp-content/uploads/2019/06/9-20-300x198.png 300w" data-ll-status="loaded"><noscript><img class="aligncenter size-full wp-image-42179" src="https://linuxhint.com/wp-content/uploads/2019/06/9-20.png" alt="" width="650" height="430" srcset="https://linuxhint.com/wp-content/uploads/2019/06/9-20.png 650w, https://linuxhint.com/wp-content/uploads/2019/06/9-20-300x198.png 300w" sizes="(max-width: 650px) 100vw, 650px" /></noscript></p>
+<p>Thank you for reading this article.&nbsp; Now you can easily manage users and groups on linux.</p><div id="AdThrive_Content_11_desktop" class="adthrive-ad adthrive-content adthrive-content-1 adthrive-ad-cls" style="min-height: 250px;" wfd-id="39"><div id="google_ads_iframe_/18190176/AdThrive_Content/5c9b6001b80bec0dfaf0b493_1__container__" style="border: 0pt none; width: 728px; height: 0px;"></div></div>
+</div>
+	<div id="AdThrive_Below_Post_1_desktop" class="adthrive-ad adthrive-below-post adthrive-below-post-1" wfd-id="37"><div id="google_ads_iframe_/18190176/AdThrive_Below_Post_1/5c9b6001b80bec0dfaf0b493_0__container__" style="border: 0pt none; width: 728px; height: 0px;"></div></div></div>
+
+	
+			<footer class="entry-footer">
+			<div class="meta-tags" wfd-id="35">
+							</div>
+		</footer>
+	
+	
+	 
+</article>
+		
+		
+		</main>
+
+		
+		
+					
+	<section class="main-box mbt-border-top author-box" wfd-id="27">
+
+		<h3 class="main-box-title">About the author</h3>
+
+		<div class="main-box-inside" wfd-id="31">
+
+		<div class="data-image" wfd-id="34">
+			<img src="./Users and groups addition modification_files/linuxinstitute_icono-150x150.png" width="112" height="112" alt="Ivan Vanney" class="avatar avatar-112 wp-user-avatar wp-user-avatar-112 alignnone photo lazyloaded" data-ll-status="loaded"><noscript><img src="https://linuxhint.com/wp-content/uploads/2017/12/linuxinstitute_icono-150x150.png" width="112" height="112" alt="Ivan Vanney" class="avatar avatar-112 wp-user-avatar wp-user-avatar-112 alignnone photo" /></noscript>		</div>
+		
+		<div class="data-content" wfd-id="32">
+			<h4 class="author-title">Ivan Vanney</h4>
+			<div class="data-entry-content" wfd-id="33">
+				<p>Ivan Vanney has over 2 years as writer for LinuxHint, he is co-founder of the freelance services marketplace <a href="https://gigopen.com/">GIGopen.com</a> where he works as a sysadmin.</p>
+			</div>
+		</div>
+
+		</div>
+
+		<div class="vce-content-outside" wfd-id="28">
+			<div class="data-links" wfd-id="30">
+					<a href="https://linuxhint.com/author/ivan_vanney/" class="vce-author-link vce-button">View all posts</a>
+			</div>
+			<div class="vce-author-links" wfd-id="29">
+											
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+									
+			</div>
+		</div>
+
+	</section>
+
+		
+		
+
+	</div>
+
+		<aside id="sidebar" class="sidebar right" style="min-height: 593px;">
+		<div id="same-category-posts-2" class="widget same-category-posts" wfd-id="16"><h4 class="widget-title"><span wfd-id="25">RELATED LINUX HINT POSTS</span></h4><ul wfd-id="17">
+<li class="same-category-post-item " wfd-id="24"><a class="post-title" href="https://linuxhint.com/troubleshooting-error-usermod/" rel="bookmark" title="Permanent Link to Troubleshooting Error: Usermod: A Process Currently Uses User">Troubleshooting Error: Usermod: A Process Currently Uses User</a></li><li class="same-category-post-item " wfd-id="23"><a class="post-title" href="https://linuxhint.com/change-my-username-in-linux/" rel="bookmark" title="Permanent Link to How Do I Change My Username in Linux?">How Do I Change My Username in Linux?</a></li><li class="same-category-post-item " wfd-id="22"><a class="post-title" href="https://linuxhint.com/list-users-ubuntu-linux-vps/" rel="bookmark" title="Permanent Link to How to List Users in Ubuntu Linux VPS">How to List Users in Ubuntu Linux VPS</a></li><li class="same-category-post-item " wfd-id="21"><a class="post-title" href="https://linuxhint.com/change-user-linux/" rel="bookmark" title="Permanent Link to How to Change User in Linux">How to Change User in Linux</a></li><li class="same-category-post-item " wfd-id="20"><a class="post-title" href="https://linuxhint.com/print_logged_in_user_names_linux/" rel="bookmark" title="Permanent Link to How to Print the User Names of Users Currently Logged into the Linux System?">How to Print the User Names of Users Currently Logged into the Linux System?</a></li><li class="same-category-post-item " wfd-id="19"><a class="post-title" href="https://linuxhint.com/linux_useradd/" rel="bookmark" title="Permanent Link to Linux’s useradd command: What it is and how to use it">Linux’s useradd command: What it is and how to use it</a></li><li class="same-category-post-item " wfd-id="18"><a class="post-title" href="https://linuxhint.com/list_all_users_linux_system/" rel="bookmark" title="Permanent Link to How to List All Users in a Linux System">How to List All Users in a Linux System</a></li></ul>
+</div>	<div id="AdThrive_Sidebar_9_desktop" class="adthrive-ad adthrive-sidebar adthrive-sidebar-9 adthrive-sticky adthrive-stuck" wfd-id="15" style="width: 300px;"><div id="google_ads_iframe_/18190176/AdThrive_Sidebar_9/5c9b6001b80bec0dfaf0b493_0__container__" wfd-id="165" style="border: 0pt none; width: 300px; height: 50px;"></div></div></aside>
+
+</div>
+
+
+
+
+	<footer id="footer" class="site-footer">
+
+				<div class="container" wfd-id="11">
+			<div class="container-fix" wfd-id="12">
+										<div class="bit-1" wfd-id="13">
+									</div>
+						</div>
+		</div>
+		
+					<div class="container-full site-info" wfd-id="8">
+				<div class="container" wfd-id="9">
+					
+						
+
+											<div class="vce-wrap-center" wfd-id="10">
+							<p><strong>Linux Hint LLC, editor@linuxhint.com<br>
+1210 Kelly Park Cir, Morgan Hill, CA 95037<br>
+</strong></p>						</div>
+					
+			
+				</div>
+			</div>
+		
+
+	</footer>
+
+
+</div>
+</div>
+
+<a href="javascript:void(0)" id="back-top" style="display: inline;"><i class="fa fa-angle-up"></i></a>
+
+<div id="amzn-assoc-ad-1438d7d4-c08f-4515-a13e-60829ea462e5" wfd-id="5"></div><script async="" src="./Users and groups addition modification_files/onejs"></script><script type="text/javascript" id="rocket-browser-checker-js-after">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script type="text/javascript" id="rocket-delay-js-js-after">
+(function() {
+"use strict";var e=function(){function n(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(e,t,r){return t&&n(e.prototype,t),r&&n(e,r),e}}();function n(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function r(e,t){n(this,r),this.attrName="data-rocketlazyloadscript",this.browser=t,this.options=this.browser.options,this.triggerEvents=e,this.userEventListener=this.triggerListener.bind(this)}return e(r,[{key:"init",value:function(){this._addEventListener(this)}},{key:"reset",value:function(){this._removeEventListener(this)}},{key:"_addEventListener",value:function(t){this.triggerEvents.forEach(function(e){return window.addEventListener(e,t.userEventListener,t.options)})}},{key:"_removeEventListener",value:function(t){this.triggerEvents.forEach(function(e){return window.removeEventListener(e,t.userEventListener,t.options)})}},{key:"_loadScriptSrc",value:function(){var r=this,e=document.querySelectorAll("script["+this.attrName+"]");0!==e.length&&Array.prototype.slice.call(e).forEach(function(e){var t=e.getAttribute(r.attrName);e.setAttribute("src",t),e.removeAttribute(r.attrName)}),this.reset()}},{key:"triggerListener",value:function(){this._loadScriptSrc(),this._removeEventListener(this)}}],[{key:"run",value:function(){RocketBrowserCompatibilityChecker&&new r(["keydown","mouseover","touchmove","touchstart","wheel"],new RocketBrowserCompatibilityChecker({passive:!0})).init()}}]),r}();t.run();
+}());
+</script>
+<script type="text/javascript" src="./Users and groups addition modification_files/imagesloaded.min.js.download" id="imagesloaded-js" defer=""></script>
+<script type="text/javascript" id="vce-main-js-extra">
+/* <![CDATA[ */
+var vce_js_settings = {"sticky_header":"","sticky_header_offset":"700","sticky_header_logo":"","logo":"https:\/\/linuxhint.com\/wp-content\/uploads\/2019\/11\/Logo-final.png","logo_retina":"","logo_mobile":"","logo_mobile_retina":"","rtl_mode":"0","ajax_url":"https:\/\/linuxhint.com\/wp-admin\/admin-ajax.php","ajax_wpml_current_lang":null,"ajax_mega_menu":"1","mega_menu_slider":"","mega_menu_subcats":"","lay_fa_grid_center":"","full_slider_autoplay":"","grid_slider_autoplay":"","grid_big_slider_autoplay":"","fa_big_opacity":{"1":"0.5","2":"0.7"},"top_bar_mobile":"1","top_bar_mobile_group":"","top_bar_more_link":"More"};
+/* ]]> */
+</script>
+<script data-minify="1" type="text/javascript" src="./Users and groups addition modification_files/min.js.download" id="vce-main-js" defer=""></script>
+<script data-minify="1" type="text/javascript" src="./Users and groups addition modification_files/main.js.download" id="aawp-js" defer=""></script>
+<script type="text/javascript" src="./Users and groups addition modification_files/fitvids.min.js.download" id="__ytprefsfitvids__-js" defer=""></script>
+<script type="text/javascript" src="./Users and groups addition modification_files/wp-embed.min.js.download" id="wp-embed-js" defer=""></script>
+<script>window.lazyLoadOptions={elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async="" src="./Users and groups addition modification_files/lazyload.min.js.download"></script><script>function lazyLoadThumb(e){var t='<img loading="lazy" data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"></noscript>',a='<div class="play"></div>';return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.dataset.query.length?'':'&'+this.dataset.query;e.setAttribute("src",t.replace("ID",this.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.replaceChild(e,this)}document.addEventListener("DOMContentLoaded",function(){var e,t,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id),e.onclick=lazyLoadYoutubeIframe,a[t].appendChild(e)});</script>
+
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1620586216 --><div id="sidr-main" class="sidr left" wfd-id="4"><div class="sidr-inner">
+	<ul id="sidr-id-vce_main_navigation_menu" class="sidr-class-nav-menu"><li id="sidr-id-menu-item-18534" class="sidr-class-menu-item sidr-class-menu-item-type-custom sidr-class-menu-item-object-custom sidr-class-menu-item-home sidr-class-menu-item-18534"><a href="https://linuxhint.com/">Home</a></li><li id="sidr-id-menu-item-19816" class="sidr-class-menu-item sidr-class-menu-item-type-post_type sidr-class-menu-item-object-page sidr-class-menu-item-19816"><a href="https://linuxhint.com/subscribe-to-linuxhint-com/">Subscribe!</a></li><li id="sidr-id-menu-item-101079" class="sidr-class-menu-item sidr-class-menu-item-type-custom sidr-class-menu-item-object-custom sidr-class-menu-item-101079"><a href="https://linuxhint.news/">Newsletter</a></li><li id="sidr-id-menu-item-33966" class="sidr-class-menu-item sidr-class-menu-item-type-post_type sidr-class-menu-item-object-page sidr-class-menu-item-33966"><a href="https://linuxhint.com/write-for-linuxhint-com/">Write For Us</a></li><li id="sidr-id-menu-item-23466" class="sidr-class-menu-item sidr-class-menu-item-type-post_type sidr-class-menu-item-object-page sidr-class-menu-item-23466"><a href="https://linuxhint.com/policies-and-privacy/">Privacy</a></li><li id="sidr-id-menu-item-37290" class="sidr-class-menu-item sidr-class-menu-item-type-post_type sidr-class-menu-item-object-page sidr-class-menu-item-37290"><a href="https://linuxhint.com/?page_id=37286">Terms</a></li><li class="sidr-class-search-header-wrap"><a class="sidr-class-search_header" href="javascript:void(0)"><i class="sidr-class-fa sidr-class-fa-search"></i></a><ul class="sidr-class-search-header-form-ul"><li><form class="sidr-class-vce-search-form" action="https://linuxhint.com/" method="get">
+	<input name="s" class="sidr-class-vce-search-input" size="20" type="text" value="Type here to search..." onfocus="(this.value == &#39;Type here to search...&#39;) &amp;&amp; (this.value = &#39;&#39;)" onblur="(this.value == &#39;&#39;) &amp;&amp; (this.value = &#39;Type here to search...&#39;)" placeholder="Type here to search..." wfd-id="154">
+		<button type="submit" class="sidr-class-vce-search-submit" wfd-id="156"><i class="sidr-class-fa sidr-class-fa-search"></i></button> 
+</form></li></ul></li></ul></div></div><iframe id="__uspapiLocator" name="__uspapiLocator" style="display: none;" src="./Users and groups addition modification_files/saved_resource.html"></iframe><div id="AdThrive_Footer_1_desktop" class="adthrive-ad adthrive-footer adthrive-footer-1 adthrive-ad-cls adthrive-sticky" style="min-height: 90px;" wfd-id="3"><div id="google_ads_iframe_/18190176/AdThrive_Footer_1/5c9b6001b80bec0dfaf0b493_0__container__" wfd-id="158" style="border: 0pt none; width: 728px; height: 50px;"></div></div><div class="adthrive-comscore adthrive-footer-message" wfd-id="1"><span wfd-id="2">An Elite CafeMedia Publisher</span></div><div id="confiant_tag_holder" style="display:none" wfd-id="0"></div><iframe src="./Users and groups addition modification_files/syncframe.html" id="criteo-syncframe" style="display: none;"></iframe></body><iframe sandbox="allow-scripts allow-same-origin" id="5848cdc8ae4686e5" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Users and groups addition modification_files/sync.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="5857c8307b468994" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Users and groups addition modification_files/ixmatch.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="586e675362c55869" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Users and groups addition modification_files/usync.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="58731626357283f1" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Users and groups addition modification_files/showad.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="5886befd179f1df" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Users and groups addition modification_files/async_usersync.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="589adaf09ee452d3" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Users and groups addition modification_files/index(1).html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="5908a4bc49816fe" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Users and groups addition modification_files/d.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="596f39571854f8c9" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Users and groups addition modification_files/prbds2s.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="602d8530255ad5db" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Users and groups addition modification_files/user_sync.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="6030f6132323ddf9" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Users and groups addition modification_files/usersync.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="6042fad83f13fb01" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Users and groups addition modification_files/services.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="605fe3a8dbdec582" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Users and groups addition modification_files/um.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="606447bed2bd9172" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Users and groups addition modification_files/d(2).html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="6078dbb8e6ff5679" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Users and groups addition modification_files/136.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="608290e6fc19cd08" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Users and groups addition modification_files/d(3).html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="609bee11a34a9539" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Users and groups addition modification_files/usersync(1).html">
+    </iframe></html>

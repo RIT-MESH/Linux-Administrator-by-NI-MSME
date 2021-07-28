@@ -1,0 +1,20 @@
+.adthrive-ad {
+clear: both;
+overflow: visible !important;
+}
+
+.adthrive-player-position.adthrive-collapse-float.adthrive-collapse-right {
+right: 2% !important;
+}
+
+@media (max-width:375px) {
+.entry-content {
+padding-left:8px !important;
+padding-right:8px !important;
+}
+}
+@media (max-width:359px) {
+.container {
+max-width:100% !important;
+}
+}
